@@ -1,0 +1,28 @@
+body{
+    font-family: 'Lato', 'sans-serif';
+    
+}
+
+h1.title{
+font-weight: 900;
+font-size: 4rem;
+color: white;
+}
+
+.title-container{
+    background-color: rgb(47, 50, 53);
+}
+
+h2.city{
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+.list-group{
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    overflow: hidden;
+}
+.weather-container{
+    margin-top: 15px;
+}
