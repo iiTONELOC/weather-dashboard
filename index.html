@@ -54,9 +54,9 @@
                 </div>
                 
                 <div class="col-9 bg-white">
-                    <div class="row row-cols-1 border-top border-bottom border-start border-secondary border-2 rounded-start weather-container">
+                    <div id="currentCity" class="row row-cols-1 border-top border-bottom border-start border-secondary border-2 rounded-start weather-container">
                         <div class="col-9">
-                            <h2 class='city'>City Name</h3>
+                            <h2 class='city'>City Name</h2>
 
                             Temperature:<br>
                             Humidity:<br>
@@ -64,10 +64,10 @@
                             UV Index: 
                         </div>
                     </div>
-                    <div class="row row-cols-1"> 
+                    <div id="title-container" class="row row-cols-1"> 
                         <h2>5-Day Forecast:</h2>
                     </div>
-                    <div class="row row-cols-5">
+                    <div id="forecastCards" class="row row-cols-5">
                         <div class="col">
                             1
                         </div>
@@ -84,8 +84,12 @@
                             5
                         </div>
                     </div>
+                    <div id="landingMessage" class="row row-cols-1 text-center"> 
+                        <h3>Select a saved city from the list or search for a new location to see current weather data!</h3>
+                    </div>
 
                 </div>
+                
                 
                 
             
