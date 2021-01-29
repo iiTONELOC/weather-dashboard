@@ -113,13 +113,13 @@ var getWeather= function(event){
             if(uvi.value <3){
                 document.querySelector('.uv').setAttribute("class","green uv");
             }
-            if(uvi.value <6){
+            if(uvi.value >2 & uvi.value<6){
                 document.querySelector('.uv').setAttribute("class", "yellow uv");
             }
-            if(uvi.value <8){
+            if(uvi.value >5 & uvi.value<8){
                 document.querySelector('.uv').setAttribute("class", "orange uv");
             }
-            if(uvi.value <11){
+            if(uvi.value >7 &uvi.value<11){
                 document.querySelector('.uv').setAttribute("class", "red uv");
             }
             if(uvi.value >=11){
