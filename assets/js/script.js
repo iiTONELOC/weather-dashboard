@@ -19,6 +19,8 @@ var show=function(){
     landingMessageEl.style.visibility="hidden";
 }
 
+
+
 // load localStorage append items to page
 var loadMemory=function(){
     var memory= JSON.parse(localStorage.getItem("storage"));
@@ -65,6 +67,11 @@ var getWeather= function(event){
         //capture weather icon
         var iconURL=data.weather[0].icon
         console.log(iconURL)
+        //capture lat and long for uvi
+        var lat =data.coord.lat;
+        console.log ("Lattitude: " + lat);
+        var long =data.coord.lon;
+        console.log("Longitude: " + long);
          //display current weather data    
         var url= "http://openweathermap.org/img/wn/"+iconURL+".png"
         document.getElementById('city').textContent=data.name;
@@ -93,7 +100,36 @@ var getWeather= function(event){
             city.textContent=cityName;
             listGroup.appendChild(city);
         }
+        fetch("http://api.openweathermap.org/data/2.5/uvi?lat="+lat+"&lon="+long+"&appid="+"339a47de31fdebaebb64d0a528d98345")
+        .then(function(uviResponse){
+            return uviResponse.json();
+        })
+        .then(function(uvi){
+            console.log(uvi);
+            var uvIndex= uvi.value;
+            //add the index to the page
+            document.querySelector('.uv').textContent=uvIndex;
+            //set background color
+            if(uvi.value <3){
+                document.querySelector('.uv').setAttribute("class","green uv");
+            }
+            if(uvi.value <6){
+                document.querySelector('.uv').setAttribute("class", "yellow uv");
+            }
+            if(uvi.value <8){
+                document.querySelector('.uv').setAttribute("class", "orange uv");
+            }
+            if(uvi.value <11){
+                document.querySelector('.uv').setAttribute("class", "red uv");
+            }
+            if(uvi.value >=11){
+                document.querySelector('.uv').setAttribute("class", "indigo uv");
+            }
+
+            
+        })
     })
+
 }
 
 loadMemory();

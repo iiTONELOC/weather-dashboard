@@ -34,3 +34,24 @@ h3{
     margin-top: 10px;
     margin-bottom:15px;
 }
+
+.uv{
+    margin-left: 15px;
+    padding:5px;
+    color:white;
+}
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+}
+.orange{
+    background-color: orange;
+}
+.red{
+    background-color: red;
+}
+.indigo{
+    background-color: rgb(141, 0, 146);
+}
