@@ -61,6 +61,16 @@ var getWeather= function(event){
         
         console.log(data);
         var cityName=data.name;
+        var iconURL=data.weather[0].icon
+        console.log(iconURL)
+        var url= "http://openweathermap.org/img/wn/"+iconURL+".png"
+        document.getElementById('city').textContent=data.name;
+        document.querySelector('.temp').textContent=data.main.temp;
+        document.querySelector('.humid').textContent=data.main.humidity;
+        document.querySelector('.wind').textContent=data.wind.speed;
+        document.querySelector('#currentIcon').setAttribute("src", url);
+
+        
         //check for duplicates before saving
         var duplicate = false;
         for (let i = 0; i < storage.length; i++) {
@@ -79,9 +89,11 @@ var getWeather= function(event){
             city.setAttribute("value",cityName);
             city.textContent=cityName;
             listGroup.appendChild(city);
-            //display current weather data
+            
+        } 
+        //display current weather data
+        
 
-        }  
         
         
         
