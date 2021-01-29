@@ -11,6 +11,14 @@ currentCityEl.style.visibility="hidden";
 titleContainerEl.style.visibility="hidden";
 forecastCardContainerEl.style.visibility="hidden";
 
+//function to show page/hide landing message
+var show=function(){
+    currentCityEl.style.visibility="visible";
+    titleContainerEl.style.visibility="visible";
+    forecastCardContainerEl.style.visibility="visible";
+    landingMessageEl.style.visibility="hidden";
+}
+
 // load localStorage append items to page
 var loadMemory=function(){
     var memory= JSON.parse(localStorage.getItem("storage"));
@@ -18,22 +26,19 @@ var loadMemory=function(){
     if(memory!=null){
         listGroup.innerHTML="";
         for (let i = 0; i < memory.length; i++) {
-        storage.push(memory[i])        
-        var city=document.createElement('li');
-        city.setAttribute("class","list-group-item");
-        city.setAttribute("value",memory[i]);
-        city.textContent=memory[i];
-        listGroup.appendChild(city);
-
-
+            storage.push(memory[i])        
+            var city=document.createElement('li');
+            city.setAttribute("class","list-group-item");
+            city.setAttribute("value",memory[i]);
+            city.textContent=memory[i];
+            listGroup.appendChild(city);
         }
-        console.log(storage);
+    console.log(storage);
     }
 }
 //save data to local storage 
 var save=function(){
-
-    localStorage.setItem("storage", JSON.stringify(storage));
+localStorage.setItem("storage", JSON.stringify(storage));
 }
 
 //getWeather function
@@ -46,10 +51,7 @@ var getWeather= function(event){
     //clear input
     document.querySelector("input").value="";
     //hide landing message show rest of page
-    currentCityEl.style.visibility="visible";
-    titleContainerEl.style.visibility="visible";
-    forecastCardContainerEl.style.visibility="visible";
-    landingMessageEl.style.visibility="hidden";
+    show();
     
     fetch("https://api.openweathermap.org/data/2.5/weather?q="+location+"&units=imperial&appid="+"339a47de31fdebaebb64d0a528d98345")
     .then(function(response){
@@ -57,12 +59,13 @@ var getWeather= function(event){
         
     })
     .then(function(data){
-
-        
         console.log(data);
+        //capture city name
         var cityName=data.name;
+        //capture weather icon
         var iconURL=data.weather[0].icon
         console.log(iconURL)
+         //display current weather data    
         var url= "http://openweathermap.org/img/wn/"+iconURL+".png"
         document.getElementById('city').textContent=data.name;
         document.querySelector('.temp').textContent=data.main.temp;
@@ -89,18 +92,8 @@ var getWeather= function(event){
             city.setAttribute("value",cityName);
             city.textContent=cityName;
             listGroup.appendChild(city);
-            
-        } 
-        //display current weather data
-        
-
-        
-        
-        
-        
+        }
     })
-    
-    
 }
 
 loadMemory();
