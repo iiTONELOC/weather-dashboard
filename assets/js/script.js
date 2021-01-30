@@ -222,7 +222,7 @@ var getWeather = function (event) {
                 listGroup.appendChild(city);
             }
 
-            fetch("http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=hourly,minutely,alerts&units=imperial&appid=339a47de31fdebaebb64d0a528d98345")
+            fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=hourly,minutely,alerts&units=imperial&appid=339a47de31fdebaebb64d0a528d98345")
                 .then(function (response) {
                     if (response.ok) {
                         return response.json();
