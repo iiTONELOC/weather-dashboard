@@ -21,7 +21,7 @@ How to use:
 - Enter a location by city name
 - Click on a city from your history
 - You may clear your weather history by clicking on `Clear History`, this action can not be undone.  
-![Screenshot](./assets/images/screenshot.gif)
+![Screenshot](./assets/images/screenshot.gif.gif)
 
 # Technology Stack
 | Technology | Description                        | Links |
