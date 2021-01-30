@@ -213,9 +213,13 @@ var getWeather = function (event) {
             }
 
             fetch("http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=hourly,minutely,alerts&units=imperial&appid=339a47de31fdebaebb64d0a528d98345")
-                .then(function (forecast) {
-                    return forecast.json();
-                })
+            .then(function (response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                else { return; }
+    
+            })
                 .then(function (forecastData) {
                     console.log(forecastData);
                     //add the data for forecast day 1
