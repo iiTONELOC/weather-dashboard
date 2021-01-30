@@ -22,3 +22,10 @@ How to use:
 - Click on a city from your history
 - You may clear your weather history by clicking on `Clear History`, this action can not be undone.  
 
+# Technology Stack
+| Technology | Description                        | Links |
+| ---------- | -----------------------------------| ------|
+|![GitHub top language](https://img.shields.io/github/languages/top/iiTONELOC/work-planner?style=plastic) | javascript |[Moment.js](https://momentjs.com/), [Moments Cheat Sheet](https://devhints.io/moment)|
+|![CSS](https://img.shields.io/badge/CSS-10.8%25-rebeccapurple)| Cascading Style Sheets | [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)                                      |
+|![HTML](https://img.shields.io/badge/HTML-41.6%25-orange)| Hyper Text MarkUp Language |
+

@@ -75,7 +75,7 @@ var reload = function (event) {
             var long = data.coord.lon;
             console.log("Longitude: " + long);
             //display current weather data    
-            var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+            var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
             document.getElementById('city').textContent = data.name;
             document.querySelector('.temp').textContent = data.main.temp;
             document.querySelector('.humid').textContent = data.main.humidity;
@@ -84,7 +84,7 @@ var reload = function (event) {
             var currentDay = moment().format('L');
             document.querySelector('.currentDate').textContent = currentDay;
 
-            fetch("http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=hourly,minutely,alerts&units=imperial&appid=339a47de31fdebaebb64d0a528d98345")
+            fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=hourly,minutely,alerts&units=imperial&appid=339a47de31fdebaebb64d0a528d98345")
                 .then(function (forecast) {
                     return forecast.json();
                 })
@@ -92,7 +92,7 @@ var reload = function (event) {
                     console.log(forecastData);
                     //add the data for forecast day 1
                     var iconURL = forecastData.daily[1].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day1').textContent = moment().add(1, 'day').format('L');
                     document.getElementById("iconDay1").setAttribute("src", url);
                     document.querySelector('.temp1').textContent = forecastData.daily[1].temp.max;
@@ -101,7 +101,7 @@ var reload = function (event) {
                     //don't want to repeat my self but not sure how to make these into functions
                     // add the data for day 2
                     var iconURL = forecastData.daily[2].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day2').textContent = moment().add(2, 'days').format('L');
                     document.getElementById("iconDay2").setAttribute("src", url);
                     document.querySelector('.temp2').textContent = forecastData.daily[2].temp.max;
@@ -109,7 +109,7 @@ var reload = function (event) {
 
                     //data for day 3
                     var iconURL = forecastData.daily[3].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day3').textContent = moment().add(3, 'days').format('L');
                     document.getElementById("iconDay3").setAttribute("src", url);
                     document.querySelector('.temp3').textContent = forecastData.daily[3].temp.max;
@@ -117,7 +117,7 @@ var reload = function (event) {
 
                     //data for day 4
                     var iconURL = forecastData.daily[4].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day4').textContent = moment().add(4, 'days').format('L');
                     document.getElementById("iconDay4").setAttribute("src", url);
                     document.querySelector('.temp4').textContent = forecastData.daily[4].temp.max;
@@ -125,7 +125,7 @@ var reload = function (event) {
 
                     //data for day 5
                     var iconURL = forecastData.daily[5].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day5').textContent = moment().add(5, 'days').format('L');
                     document.getElementById("iconDay5").setAttribute("src", url);
                     document.querySelector('.temp5').textContent = forecastData.daily[5].temp.max;
@@ -191,7 +191,7 @@ var getWeather = function (event) {
             var long = data.coord.lon;
             console.log("Longitude: " + long);
             //display current weather data    
-            var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+            var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
             document.getElementById('city').textContent = data.name;
             document.querySelector('.temp').textContent = data.main.temp;
             document.querySelector('.humid').textContent = data.main.humidity;
@@ -234,7 +234,7 @@ var getWeather = function (event) {
                     console.log(forecastData);
                     //add the data for forecast day 1
                     var iconURL = forecastData.daily[1].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day1').textContent = moment().add(1, 'day').format('L');
                     document.getElementById("iconDay1").setAttribute("src", url);
                     document.querySelector('.temp1').textContent = forecastData.daily[1].temp.max;
@@ -243,7 +243,7 @@ var getWeather = function (event) {
                     //don't want to repeat my self but not sure how to make these into functions
                     // add the data for day 2
                     var iconURL = forecastData.daily[2].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day2').textContent = moment().add(2, 'days').format('L');
                     document.getElementById("iconDay2").setAttribute("src", url);
                     document.querySelector('.temp2').textContent = forecastData.daily[2].temp.max;
@@ -251,7 +251,7 @@ var getWeather = function (event) {
 
                     //data for day 3
                     var iconURL = forecastData.daily[3].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day3').textContent = moment().add(3, 'days').format('L');
                     document.getElementById("iconDay3").setAttribute("src", url);
                     document.querySelector('.temp3').textContent = forecastData.daily[3].temp.max;
@@ -259,7 +259,7 @@ var getWeather = function (event) {
 
                     //data for day 4
                     var iconURL = forecastData.daily[4].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day4').textContent = moment().add(4, 'days').format('L');
                     document.getElementById("iconDay4").setAttribute("src", url);
                     document.querySelector('.temp4').textContent = forecastData.daily[4].temp.max;
@@ -267,7 +267,7 @@ var getWeather = function (event) {
 
                     //data for day 5
                     var iconURL = forecastData.daily[5].weather[0].icon
-                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    var url = "https://openweathermap.org/img/wn/" + iconURL + ".png"
                     document.getElementById('day5').textContent = moment().add(5, 'days').format('L');
                     document.getElementById("iconDay5").setAttribute("src", url);
                     document.querySelector('.temp5').textContent = forecastData.daily[5].temp.max;
