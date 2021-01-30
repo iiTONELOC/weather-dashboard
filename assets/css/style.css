@@ -68,3 +68,11 @@ h3 h4 h5{
 .indigo{
     background-color: rgb(141, 0, 146);
 }
+
+.iconMargin{
+    margin-top:10px;
+    margin-bottom:20px;
+}
+.card-body{
+    color:white;
+}
