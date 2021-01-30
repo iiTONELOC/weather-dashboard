@@ -13,11 +13,24 @@ color: white;
     background-color: rgb(47, 50, 53);
 }
 
-h2.city{
-    font-weight: 700;
-    font-size: 1.6rem;
+#city{
+    
     margin-top: 10px;
+   
 }
+.currentDate{
+   
+    margin-top: 10px;
+
+    
+}
+#currentIcon{
+    margin-top: 5px;
+}
+.padding{
+    padding:0px;
+}
+
 .list-group{
     margin-bottom: 20px;
     font-size: 1.3rem;
