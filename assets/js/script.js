@@ -107,82 +107,80 @@ var getWeather = function (event) {
                 city.textContent = cityName;
                 listGroup.appendChild(city);
             }
-            fetch("http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + long + "&appid=" + "339a47de31fdebaebb64d0a528d98345")
-                .then(function (uviResponse) {
-                    return uviResponse.json();
+
+            fetch("http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=hourly,minutely,alerts&units=imperial&appid=339a47de31fdebaebb64d0a528d98345")
+                .then(function (forecast) {
+                    return forecast.json();
                 })
-                .then(function (uvi) {
-                    console.log(uvi);
-                    var uvIndex = uvi.value;
+                .then(function (forecastData) {
+                    console.log(forecastData);
+                    //add the data for forecast day 1
+                    var iconURL = forecastData.daily[1].weather[0].icon
+                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    document.getElementById('day1').textContent = moment().add(1, 'day').format('L');
+                    document.getElementById("iconDay1").setAttribute("src", url);
+                    document.querySelector('.temp1').textContent = forecastData.daily[1].temp.max;
+                    document.querySelector('.hum1').textContent = forecastData.daily[1].humidity;
+
+                    //don't want to repeat my self but not sure how to make these into functions
+                    // add the data for day 2
+                    var iconURL = forecastData.daily[2].weather[0].icon
+                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    document.getElementById('day2').textContent = moment().add(2, 'days').format('L');
+                    document.getElementById("iconDay2").setAttribute("src", url);
+                    document.querySelector('.temp2').textContent = forecastData.daily[2].temp.max;
+                    document.querySelector('.hum2').textContent = forecastData.daily[2].humidity;
+
+                    //data for day 3
+                    var iconURL = forecastData.daily[3].weather[0].icon
+                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    document.getElementById('day3').textContent = moment().add(3, 'days').format('L');
+                    document.getElementById("iconDay3").setAttribute("src", url);
+                    document.querySelector('.temp3').textContent = forecastData.daily[3].temp.max;
+                    document.querySelector('.hum3').textContent = forecastData.daily[3].humidity;
+
+                    //data for day 4
+                    var iconURL = forecastData.daily[4].weather[0].icon
+                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    document.getElementById('day4').textContent = moment().add(4, 'days').format('L');
+                    document.getElementById("iconDay4").setAttribute("src", url);
+                    document.querySelector('.temp4').textContent = forecastData.daily[4].temp.max;
+                    document.querySelector('.hum4').textContent = forecastData.daily[4].humidity;
+
+                    //data for day 5
+                    var iconURL = forecastData.daily[5].weather[0].icon
+                    var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
+                    document.getElementById('day5').textContent = moment().add(5, 'days').format('L');
+                    document.getElementById("iconDay5").setAttribute("src", url);
+                    document.querySelector('.temp5').textContent = forecastData.daily[5].temp.max;
+                    document.querySelector('.hum5').textContent = forecastData.daily[5].humidity;
+
+                    //get the uvi for current weather
+
+                    var uvIndex = forecastData.current.uvi;
                     //add the index to the page
                     document.querySelector('.uv').textContent = uvIndex;
                     //set background color
-                    if (uvi.value < 3) {
+                    if (forecastData.current.uvi < 3) {
                         document.querySelector('.uv').setAttribute("class", "green uv");
                     }
-                    if (uvi.value > 2 & uvi.value < 6) {
+                    if (forecastData.current.uvi > 2 & forecastData.current.uvi < 6) {
                         document.querySelector('.uv').setAttribute("class", "yellow uv");
                     }
-                    if (uvi.value > 5 & uvi.value < 8) {
+                    if (forecastData.current.uvi > 5 & forecastData.current.uvi < 8) {
                         document.querySelector('.uv').setAttribute("class", "orange uv");
                     }
-                    if (uvi.value > 7 & uvi.value < 11) {
+                    if (forecastData.current.uvi > 7 & forecastData.current.uvi < 11) {
                         document.querySelector('.uv').setAttribute("class", "red uv");
                     }
-                    if (uvi.value >= 11) {
+                    if (forecastData.current.uvi >= 11) {
                         document.querySelector('.uv').setAttribute("class", "indigo uv");
                     }
-                    fetch("http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=hourly,minutely,alerts&units=imperial&appid=339a47de31fdebaebb64d0a528d98345")
-                        .then(function (forecast) {
-                            return forecast.json();
-                        })
-                        .then(function (forecastData) {
-                            console.log(forecastData);
-                            //add the data for forecast day 1
-                            var iconURL = forecastData.daily[1].weather[0].icon
-                            var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
-                            document.getElementById('day1').textContent=moment().add(1, 'day').format('L');
-                            document.getElementById("iconDay1").setAttribute("src",url);
-                            document.querySelector('.temp1').textContent= forecastData.daily[1].temp.max;
-                            document.querySelector('.hum1').textContent= forecastData.daily[1].humidity;
-
-                            //don't want to repeat my self but not sure how to make these into functions
-                            // add the data for day 2
-                            var iconURL = forecastData.daily[2].weather[0].icon
-                            var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
-                            document.getElementById('day2').textContent=moment().add(2, 'days').format('L');
-                            document.getElementById("iconDay2").setAttribute("src",url);
-                            document.querySelector('.temp2').textContent= forecastData.daily[2].temp.max;
-                            document.querySelector('.hum2').textContent= forecastData.daily[2].humidity;
-
-                            //data for day 3
-                            var iconURL = forecastData.daily[3].weather[0].icon
-                            var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
-                            document.getElementById('day3').textContent=moment().add(3, 'days').format('L');
-                            document.getElementById("iconDay3").setAttribute("src",url);
-                            document.querySelector('.temp3').textContent= forecastData.daily[3].temp.max;
-                            document.querySelector('.hum3').textContent= forecastData.daily[3].humidity;
-
-                            //data for day 4
-                            var iconURL = forecastData.daily[4].weather[0].icon
-                            var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
-                            document.getElementById('day4').textContent=moment().add(4, 'days').format('L');
-                            document.getElementById("iconDay4").setAttribute("src",url);
-                            document.querySelector('.temp4').textContent= forecastData.daily[4].temp.max;
-                            document.querySelector('.hum4').textContent= forecastData.daily[4].humidity;
-
-                            //data for day 5
-                            var iconURL = forecastData.daily[5].weather[0].icon
-                            var url = "http://openweathermap.org/img/wn/" + iconURL + ".png"
-                            document.getElementById('day5').textContent=moment().add(5, 'days').format('L');
-                            document.getElementById("iconDay5").setAttribute("src",url);
-                            document.querySelector('.temp5').textContent= forecastData.daily[5].temp.max;
-                            document.querySelector('.hum5').textContent= forecastData.daily[5].humidity;
-                        })
-
-
                 })
+
+
         })
+
 
 }
 
