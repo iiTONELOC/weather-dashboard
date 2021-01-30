@@ -5,6 +5,7 @@ var landingMessageEl = document.getElementById('landingMessage');
 var btn = document.getElementById('search');
 var storage = [];
 var listGroup = document.querySelector('.list-group');
+var clearListBtn = document.querySelector('#erase');
 
 
 //show landing message only on load
@@ -42,6 +43,15 @@ var loadMemory = function () {
 //save data to local storage 
 var save = function () {
     localStorage.setItem("storage", JSON.stringify(storage));
+}
+
+//clears list
+var erase = function (event) {
+    localStorage.clear();
+    const myNode = document.getElementById("list");
+    while (myNode.lastElementChild) {
+        myNode.removeChild(myNode.lastElementChild);
+    }
 }
 
 var reload = function (event) {
@@ -213,13 +223,13 @@ var getWeather = function (event) {
             }
 
             fetch("http://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=hourly,minutely,alerts&units=imperial&appid=339a47de31fdebaebb64d0a528d98345")
-            .then(function (response) {
-                if (response.ok) {
-                    return response.json();
-                }
-                else { return; }
-    
-            })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    else { return; }
+
+                })
                 .then(function (forecastData) {
                     console.log(forecastData);
                     //add the data for forecast day 1
@@ -296,3 +306,4 @@ loadMemory();
 //event listener for button
 btn.addEventListener('click', getWeather)
 listGroup.addEventListener('click', reload)
+clearListBtn.addEventListener('click', erase)
